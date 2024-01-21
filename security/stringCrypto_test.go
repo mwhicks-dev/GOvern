@@ -8,7 +8,7 @@ import (
 func TestEncryptionDecryption(t *testing.T) {
 	// Sample data
 	initial := "The quick brown fox jumps over the lazy dog, and a cat watches."
-	key := []byte("TEST KEY 1")
+	key := []byte("TEST KEY 0000001")
 
 	// Encrypted and decrypt sample data
 	text, err := encrypt(initial, key)
@@ -30,8 +30,8 @@ func TestEncryptionDecryption(t *testing.T) {
 func TestEncryption(t *testing.T) {
 	// Sample data
 	initial := "The quick brown fox jumps over the lazy dog, and a cat watches."
-	key1 := []byte("TEST KEY 1")
-	key2 := []byte("TEST KEY 2")
+	key1 := []byte("TEST KEY 0000001")
+	key2 := []byte("TEST KEY 0000002")
 
 	// Encrypt sample data
 	text1, err := encrypt(initial, key1)
@@ -53,7 +53,7 @@ func TestEncryption(t *testing.T) {
 	if strings.Compare(text1, text2) == 0 {
 		t.Fatalf("separate keys encrypt to same string")
 	}
-	if strings.Compare(text1, text3) == 0 {
+	if strings.Compare(text1, text3) != 0 {
 		t.Fatalf("same key encrypts to separate strings")
 	}
 }
