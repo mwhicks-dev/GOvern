@@ -77,3 +77,22 @@ func TestDecryption(t *testing.T) {
 		t.Fatalf("different key decrypts encrypted string")
 	}
 }
+
+func TestAesKdf(t *testing.T) {
+	// Sample data
+	key := PasswordToKey("password123", "master")
+	keySame := PasswordToKey("password123", "master")
+	keyDiff := PasswordToKey("password321", "master")
+	keyDiffSalt := PasswordToKey("password123", "pwencrypt")
+
+	// Ensure correct behavior
+	if strings.Compare(string(key), string(keySame)) != 0 {
+		t.Fatalf("same password and salt hash to different key")
+	}
+	if strings.Compare(string(key), string(keyDiffSalt)) == 0 {
+		t.Fatalf("same password and different salt hash to same key")
+	}
+	if strings.Compare(string(key), string(keyDiff)) == 0 {
+		t.Fatalf("different password and same key hash to same key")
+	}
+}
