@@ -14,7 +14,11 @@ type Record struct {
 	pwd string
 }
 
-func InitDatabaseTable(username string) (*sql.DB, error) {
+func CreateRecord(sid string, usr string, pwd string) Record {
+	return Record{sid, usr, pwd}
+}
+
+func InitializeSql() (*sql.DB, error) {
 	// Configure SQL access
 	cfg := mysql.Config{
 		User:   os.Getenv("DBUSER"),
@@ -34,16 +38,29 @@ func InitDatabaseTable(username string) (*sql.DB, error) {
 		return nil, err
 	}
 
+	return db, nil
+}
+
+func CheckUserTableExists(db *sql.DB, username string) bool {
+	// Create SQL query
+	_, err := QueryExistingRecord(db, username, "root")
+	if err == nil {
+		return true
+	}
+	return false
+}
+
+func InitDatabaseTable(db *sql.DB, username string) error {
 	// Create SQL query
 	query := fmt.Sprintf("CREATE TABLE IF NOT EXISTS %v (id BIGINT AUTO_INCREMENT NOT NULL, record_name VARCHAR(256) NOT NULL, username VARCHAR(256), password VARCHAR(256), PRIMARY KEY(id));", username)
 
 	// Execute SQL query
-	_, err = db.Exec(query)
+	_, err := db.Exec(query)
 	if err != nil {
-		return nil, err
+		return err
 	}
 
-	return db, nil
+	return nil
 }
 
 func AddNewRecord(db *sql.DB, username string, record Record) error {

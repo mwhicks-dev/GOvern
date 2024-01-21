@@ -31,3 +31,17 @@ func LowerCase(s string) string {
 	return strings.ToLower(s)
 
 }
+
+func Alphanumeric(s string) bool {
+
+	alphabet := "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567859"
+
+	for i, _ := range s {
+		if !strings.Contains(alphabet, s[i:i+1]) {
+			return false
+		}
+	}
+
+	return true
+
+}

@@ -11,7 +11,11 @@ func TestAddAndQueryRecords(t *testing.T) {
 	record := Record{"NCSU", "mwhicks2@ncsu.edu", "password123"}
 
 	// Initialize database
-	db, err := InitDatabaseTable(username)
+	db, err := InitializeSql()
+	if err != nil {
+		t.Fatalf(err.Error())
+	}
+	err = InitDatabaseTable(db, username)
 	if err != nil {
 		t.Fatalf(err.Error())
 	}
@@ -98,7 +102,11 @@ func TestUpdateExistingRecord(t *testing.T) {
 	record := Record{"NCSU", "mwhicks2@ncsu.edu", "password123"}
 
 	// Initialize database
-	db, err := InitDatabaseTable(username)
+	db, err := InitializeSql()
+	if err != nil {
+		t.Fatalf(err.Error())
+	}
+	err = InitDatabaseTable(db, username)
 	if err != nil {
 		t.Fatalf(err.Error())
 	}

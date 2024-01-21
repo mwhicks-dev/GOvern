@@ -12,18 +12,25 @@ func main() {
 	for {
 		fmt.Print("Please enter ENTER, SIGNUP, or CLOSE (case-insensitive): ")
 		text, _ := reader.ReadString('\n')
-		text = Clean(text)
-		if LowerCase(text) == LowerCase("ENTER") {
-			// TODO: Use enter workflow
-		} else if LowerCase(text) == LowerCase("CLOSE") {
-			break
-		} else if LowerCase(text) == LowerCase("SIGNUP") {
-			// TODO: Use signup workflow
-		} else if text == "" {
-			// Do nothing
-		} else {
-			fmt.Printf("Did not recognize command %v.\n", text)
-		}
+
+		Handle(reader, Clean(text))
+		fmt.Println()
+	}
+
+}
+
+func Handle(reader *bufio.Reader, cmd string) {
+
+	if LowerCase(cmd) == LowerCase("ENTER") {
+		// TODO: Use enter workflow
+	} else if LowerCase(cmd) == LowerCase("CLOSE") {
+		os.Exit(0)
+	} else if LowerCase(cmd) == LowerCase("SIGNUP") {
+		SignupLoop(reader)
+	} else if cmd == "" {
+		// Do nothing
+	} else {
+		fmt.Printf("Did not recognize command %v.\n", cmd)
 	}
 
 }
