@@ -1,3 +1,3 @@
-module hicksm.dev/govern
+module GOvern.hicksm.dev/GOvern
 
 go 1.21.6
