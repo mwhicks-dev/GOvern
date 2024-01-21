@@ -8,16 +8,6 @@ import (
 	"os"
 )
 
-type Record struct {
-	sid string
-	usr string
-	pwd string
-}
-
-func CreateRecord(sid string, usr string, pwd string) Record {
-	return Record{sid, usr, pwd}
-}
-
 func InitializeSql() (*sql.DB, error) {
 	// Configure SQL access
 	cfg := mysql.Config{
