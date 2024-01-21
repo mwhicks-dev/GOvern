@@ -11,12 +11,12 @@ func TestEncryptionDecryption(t *testing.T) {
 	key := []byte("TEST KEY 0000001")
 
 	// Encrypted and decrypt sample data
-	text, err := encrypt(initial, key)
+	text, err := Encrypt(initial, key)
 	if err != nil {
 		t.Fatalf("encryption failed")
 	}
 
-	text, err = decrypt(text, key)
+	text, err = Decrypt(text, key)
 	if err != nil {
 		t.Fatalf("decryption failed")
 	}
@@ -34,17 +34,17 @@ func TestEncryption(t *testing.T) {
 	key2 := []byte("TEST KEY 0000002")
 
 	// Encrypt sample data
-	text1, err := encrypt(initial, key1)
+	text1, err := Encrypt(initial, key1)
 	if err != nil {
 		t.Fatalf("encryption 1 failed")
 	}
 
-	text2, err := encrypt(initial, key2)
+	text2, err := Encrypt(initial, key2)
 	if err != nil {
 		t.Fatalf("encryption 2 failed")
 	}
 
-	text3, err := encrypt(initial, key1)
+	text3, err := Encrypt(initial, key1)
 	if err != nil {
 		t.Fatalf("encryption 3 failed")
 	}

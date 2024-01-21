@@ -6,7 +6,7 @@ import (
 	"errors"
 )
 
-func encrypt(s string, key []byte) (string, error) {
+func Encrypt(s string, key []byte) (string, error) {
 	/* https://tutorialedge.net/golang/go-encrypt-decrypt-aes-tutorial/ */
 
 	// Convert plaintext to bytes
@@ -31,7 +31,7 @@ func encrypt(s string, key []byte) (string, error) {
 	return ciphertext, nil
 }
 
-func decrypt(s string, key []byte) (string, error) {
+func Decrypt(s string, key []byte) (string, error) {
 	/* https://tutorialedge.net/golang/go-encrypt-decrypt-aes-tutorial/ */
 
 	// Convert ciphertext to bytes
