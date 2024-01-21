@@ -1,4 +1,4 @@
-module GOvern.hicksm.dev/mysql
+module govern.hicksm.dev/mysql
 
 go 1.21.6
 

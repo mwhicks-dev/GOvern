@@ -1,11 +1,11 @@
 package main
 
 import (
-	"GOvern.hicksm.dev/mysql"
-	"GOvern.hicksm.dev/security"
 	"bufio"
 	"encoding/hex"
 	"fmt"
+	"govern.hicksm.dev/mysql"
+	"govern.hicksm.dev/security"
 )
 
 func SignupLoop(reader *bufio.Reader) {
