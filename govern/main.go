@@ -22,7 +22,7 @@ func main() {
 func Handle(reader *bufio.Reader, cmd string) {
 
 	if LowerCase(cmd) == LowerCase("ENTER") {
-		// TODO: Use enter workflow
+		EnterLoop(reader)
 	} else if LowerCase(cmd) == LowerCase("CLOSE") {
 		os.Exit(0)
 	} else if LowerCase(cmd) == LowerCase("SIGNUP") {
