@@ -10,14 +10,14 @@ func CreateRecord(sid string, usr string, pwd string) Record {
 	return Record{sid, usr, pwd}
 }
 
-func getRecordSid(record Record) string {
+func GetRecordSid(record Record) string {
 	return record.sid
 }
 
-func getRecordUsr(record Record) string {
+func GetRecordUsr(record Record) string {
 	return record.usr
 }
 
-func getRecordPwd(record Record) string {
+func GetRecordPwd(record Record) string {
 	return record.pwd
 }
